@@ -5,7 +5,7 @@ Locks that can be used to solve Compound Readers-Writers Problem in database-bas
 
 当一个shared resource只包含一个record时，这个record-level lock可以完全保护这个shared resource。但是当一个shared resource包含多个record时，每个record-level lock都只能保护其对应的record，因此，写者和写者之间对shared resource的访问不是完全互斥的，写者和读者之间对shared resource的访问也不是完全互斥的。
 
-一个解决方案是在app中使用一把互斥锁foobarlock来控制写者们对这个shared resource的访问而对读者们不施加额外的约束。如下：
+一个解决方案是在app中使用一把互斥锁来控制写者们对这个shared resource的访问而对读者们不施加额外的约束。如下：
 
 ```c
 sem_t foobarlock;
