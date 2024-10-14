@@ -1,7 +1,7 @@
 # Readme
 Locks that can be used to solve Compound Readers-Writers Problem in database-based apps.
 
-几乎所有database都实现了record-level lock，从而解决了record-level的Readers-Writers Problem，但是这种record-level lock经常只供database内部使用，不向用户提供。
+几乎所有database都实现了record-level lock，解决了record-level的Readers-Writers Problem，但是record-level lock经常只在database内部使用，不向用户提供接口。
 
 当一个shared resource只包含一个record时，这个record-level lock可以完全保护这个shared resource。但是当一个shared resource包含多个record时，每个record-level lock都只能保护其对应的record，因此，写者和写者之间对shared resource的访问不是完全互斥的，写者和读者之间对shared resource的访问也不是完全互斥的。
 
