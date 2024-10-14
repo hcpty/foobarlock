@@ -1,5 +1,5 @@
 # Readme
-A lock that can be used to solve Compound Readers-Writers Problem in database-based apps.
+Locks that can be used to solve Compound Readers-Writers Problem in database-based apps.
 
 几乎所有database都实现了record-level lock，从而解决了record-level的Readers-Writers Problem，但是这种record-level lock经常只供database内部使用，不向用户提供。
 
