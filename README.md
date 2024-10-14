@@ -31,7 +31,7 @@ void writer(void)
 
 该方案的缺点是读者有可能会读出写者正在写的shared resource，该缺点在特定情况下会导致app发生逻辑上的错误，但是可以通过逻辑检查、重试机制进行避免。可见该方案只适用于读的频次远高于写的频次的场景。
 
-Foobarlock旨在替代数据库事务，数据库事务是一种“黑魔法”，而且数据库事务并非到处可用。
+Foobarlock旨在替代数据库事务，数据库事务是“黑魔法”，而且数据库事务并非到处可用。
 
 ### Credits
 - [Readers–writers problem - Wikipedia](https://www.wikipedia.org/wiki/Readers-writers_problem)
