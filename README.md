@@ -35,3 +35,4 @@ Foobarlock旨在替代数据库事务，因为数据库事务是一种“黑魔�
 
 ### Credits
 - [Readers–writers problem - Wikipedia](https://www.wikipedia.org/wiki/Readers-writers_problem)
+- [Database transaction - Wikipedia](https://www.wikipedia.org/wiki/Database_transaction)
