@@ -31,5 +31,7 @@ void writer(void)
 
 该方案要求所使用的database必须实现了record-level lock，但是不要求database向用户提供显式的record-level lock接口。
 
+Foobarlock旨在取代数据库事务。
+
 ### Credits
 - [Readers–writers problem - Wikipedia](https://www.wikipedia.org/wiki/Readers-writers_problem)
