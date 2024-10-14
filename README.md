@@ -27,7 +27,7 @@ void writer(void)
 }
 ```
 
-该方案要求所使用的database必须实现了record-level lock，但是不要求database向用户提供显式的record-level lock接口。
+该方案要求所使用的database必须实现了record-level lock，但是不强制要求database向用户提供显式的record-level lock接口。
 
 该方案的缺点是读者有可能会读出写者正在写的shared resource，该缺点在特定情况下会导致app发生逻辑上的错误，但是可以通过逻辑检查、重试机制进行避免。可见该方案只适用于读的频次远高于写的频次的场景。
 
