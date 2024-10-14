@@ -7,7 +7,7 @@ A lock that can be used to solve Readers-Writers Problem in database-based apps.
 
 一个解决方案是在app中使用一把互斥锁foobarlock来控制写者们对这个shared resource的访问而对读者们不施加额外的约束。如下：
 
-```
+```c
 sem_t foobarlock;
 
 void reader(void)
