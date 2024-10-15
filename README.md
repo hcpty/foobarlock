@@ -31,7 +31,7 @@ Foobar是一种惯用语，在此处指代一组相关的record。Foobarlock代�
 
 由于允许读者读写者正在写的shared resource，所以有时候读者读出来的数据可能会存在逻辑上的歧义，这种歧义通常可以通过逻辑检查和重试机制进行消除。因此，该方案仅适用于读的频次远高于写的频次的场景。
 
-Foobarlock旨在替代数据库事务，因为数据库事务是一种“黑魔法”，而且数据库事务并非到处可用。
+Foobarlock可以替代数据库事务，因为数据库事务是一种“黑魔法”，而且数据库事务并非到处可用。
 
 ### Credits
 - [Readers–writers problem - Wikipedia](https://www.wikipedia.org/wiki/Readers-writers_problem)
