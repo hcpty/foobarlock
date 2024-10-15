@@ -34,4 +34,4 @@ Foobar是一种惯用语，在此处指代一组相关的record。Foobarlock代�
 Foobarlock可以替代数据库事务，因为数据库事务是一种“黑魔法”，而且数据库事务并非到处可用。
 
 ### Credits
-- [Readers–writers problem - Wikipedia](https://www.wikipedia.org/wiki/Readers-writers_problem)
+- [Readers–writers problem - Wikipedia](https://en.wikipedia.org/wiki/Readers-writers_problem)
