@@ -27,7 +27,7 @@ void writer(void)
 }
 ```
 
-Foobar是一种惯用语，在此处指代一组相关的record。Foobarlock代表一组隐式的record-level lock和一把显式的shared-resource-level lock，分别施加在每个record上以及这个shared resource上，foobarlock因此得名。
+Foobar是一种惯用语，在此处指代一组相关的record。Foobarlock代表一组隐含的record-level lock和一把显式的shared-resource-level lock，分别施加在每个record上以及这个shared resource上，foobarlock因此得名。
 
 由于允许读者读写者正在写的shared resource，所以有时候读者读出来的数据可能会存在逻辑上的歧义，这种歧义通常可以通过逻辑检查和重试机制进行消除。因此，该方案仅适用于读的频次远高于写的频次的场景。
 
