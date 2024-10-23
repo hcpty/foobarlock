@@ -31,9 +31,11 @@ void writer(void)
 
 Foobar是一种惯用语，在此处指代一组相关的record。Foobarlock代表一组隐含的record-level lock和一把显式的shared-resource-level lock，分别施加在每个record上以及这个shared resource上，foobarlock由此得名。
 
-由于允许读者读写者正在写的shared resource，所以有时候读者读出来的shared resource可能会存在逻辑上的歧义，可以通过逻辑检查和重试等机制进行消除。
+由于允许读者读写者正在写的shared resource，虽然每个record都有record-level lock的保护，但是有时候读者读出来的shared resource整体上可能会存在逻辑上的歧义，可以通过逻辑检查和重试等机制进行消除。
 
 Foobarlock可以替代数据库事务，因为数据库事务是一种“黑魔法”，而且数据库事务并非到处可用。
+
+在采用无差别扩容方案的架构中，一个应用程序可以拥有多个实例，而且是跨机器部署的，此时需要一种支持显式锁操作的数据库来支持foobarlock解决方案。
 
 ### Credits
 - [Readers–writers problem - Wikipedia](https://en.wikipedia.org/wiki/Readers-writers_problem)
