@@ -35,7 +35,5 @@ Foobar是一种惯用语，在此处指代一组相关的record。Foobarlock代�
 
 Foobarlock可以替代数据库事务，因为数据库事务是一种“黑魔法”，而且数据库事务并非到处可用。
 
-在无差别扩容架构中，一个应用程序可以拥有多个相同的实例，而且可能是跨机器部署的，此时需要一种支持显式锁操作的数据库来支持foobarlock解决方案。
-
 ### Credits
 - [Readers–writers problem - Wikipedia](https://en.wikipedia.org/wiki/Readers-writers_problem)
