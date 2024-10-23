@@ -3,7 +3,7 @@ Locks that can be used to solve Compound Readers-Writers Problem in database-bas
 
 ### Foobarlock
 
-几乎所有的database都实现了record-level lock，解决了record-level的Readers-Writers Problem。
+几乎所有的database都实现了record-level lock，解决了record-level的Readers-Writers Problem，record-level lock的实现一般是Readers-Writer Lock。
 
 考虑并发地读写一个shared resource。当这个shared resource只对应一个record时，record-level lock可以完全保护这个shared resource。但是当一个shared resource对应多个record时，每个record-level lock都只能保护其对应的record，因此，写者和写者之间对这个shared resource的访问不是完全互斥的，写者和读者之间对这个shared resource的访问也不是完全互斥的。
 
