@@ -4,7 +4,7 @@ A solution that can be used to solve Compound Readers-Writers Problem in databas
 ### Foobarlock
 
 几乎所有的database都实现了record-level lock，record-level lock的实现一般都是Readers-Writer Lock。现在，考虑并发地读写一个shared resource：
-- 当这个shared resource只对应一个record时，record-level lock可以完全保护这个shared resource。
+- 当这个shared resource只对应一个record时，record-level lock可以完全保护这个shared resource，不存在问题。
 - 当这个shared resource对应多个record时，每个record-level lock都只能保护其对应的record，因此导致了Compound Readers-Writers Problem：
   - 写者和写者之间对这个shared resource的访问不是完全互斥的，虽然有record-levle lock的保护，多个写者仍然可以破坏这个shared resource。
   - 读者和写者之间对这个shared resource的访问不是完全互斥的，当一个写者正在create/read/update/delete the records of the shared resource的时候，读者可以进入现场read the records of the shared resource，因此读者read出来的这个shared resource可能是不完整的。同时由于有record-level lock的保护，读者read出来的每一个record的内容都是完整的。
