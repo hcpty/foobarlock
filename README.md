@@ -15,7 +15,7 @@ sem_t foobarlock;
 void reader(void)
 {
   while (1) {
-    /* can read the records */
+    /* read the records */
   }
 }
 
@@ -23,7 +23,7 @@ void writer(void)
 {
   while (1) {
     P(&foobarlock);
-    /* can create/read/update/delete the records */
+    /* create/read/update/delete the records */
     V(&foobarlock);
   }
 }
