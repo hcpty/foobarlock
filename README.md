@@ -35,3 +35,4 @@ Foobar是一种惯用语，在此处指代一组相关的record。Foobarlock代�
 
 ### Credits
 - [Readers–writers problem - Wikipedia](https://en.wikipedia.org/wiki/Readers-writers_problem)
+- [Readers–writer lock - Wikipedia](https://en.wikipedia.org/wiki/Readers–writer_lock)
