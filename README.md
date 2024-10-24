@@ -16,7 +16,8 @@ sem_t foobarlock;
 void reader(void)
 {
   while (1) {
-    /* read the records of the shared resource, may need to sovle incompletion problems */
+    /* read the records of the shared resource */
+    /* may need to sovle incompletion problems */
   }
 }
 
