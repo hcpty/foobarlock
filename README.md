@@ -23,7 +23,7 @@ void writer(void)
 {
   while (1) {
     P(&foobarlock);
-    /* read/write the records */
+    /* create/read/update/delete the records */
     V(&foobarlock);
   }
 }
@@ -31,7 +31,7 @@ void writer(void)
 
 Foobar是一种惯用语，在此处指代一组相关的record。Foobarlock代表一组隐含的record-level lock和一把显式的shared-resource-level lock，分别施加在每个record上以及这个shared resource上，foobarlock由此得名。
 
-由于允许读者读写者正在写的shared resource，虽然每个record都有Readers-Writer Lock的保护，但是有时候读者读出来的shared resource在整体上可能会存在逻辑上的歧义，可以通过逻辑检查和重试等机制进行消除。
+由于允许读者读写者正在写的shared resource，虽然每个record都有Readers-Writer Lock的保护，但是有时候读者读出来的shared resource从整体上来看可能会存在逻辑上的歧义，可以通过逻辑检查和重试等机制进行消除。
 
 Foobarlock可以替代数据库事务，因为数据库事务是一种“黑魔法”，而且数据库事务并非到处可用。
 
