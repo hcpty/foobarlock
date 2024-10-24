@@ -1,21 +1,22 @@
 # Readme
-Locks that can be used to solve Compound Readers-Writers Problem in database-based apps.
+A solution that can be used to solve Compound Readers-Writers Problem in database-based apps.
 
 ### Foobarlock
 
-几乎所有的database都实现了record-level lock，解决了record-level的Readers-Writers Problem，record-level lock的实现一般是Readers-Writer Lock。
+几乎所有的database都实现了record-level lock，record-level lock的实现一般都是Readers-Writer Lock。现在，考虑并发地读写一个shared resource：
+- 当这个shared resource只对应一个record时，record-level lock可以完全保护这个shared resource。
+- 当这个shared resource对应多个record时，每个record-level lock都只能保护其对应的record，因此导致了Compound Readers-Writers Problem：
+  - 写者和写者之间对这个shared resource的访问不是完全互斥的，虽然有record-levle lock的保护，多个写者仍然可以破坏这个shared resource。
+  - 读者和写者之间对这个shared resource的访问不是完全互斥的，当一个写者正在create/read/update/delete the records of the shared resource的时候，读者可以进入现场read the records of the shared resource，因此读者read出来的这个shared resource可能是不完整的。同时由于有record-level lock的保护，读者read出来的每一个record的内容都是完整的。
 
-考虑并发地读写一个shared resource。当这个shared resource只对应一个record时，record-level lock可以完全保护这个shared resource。但是当一个shared resource对应多个record时，每个record-level lock都只能保护其对应的record，因此，写者和写者之间对这个shared resource的访问不是完全互斥的，写者和读者之间对这个shared resource的访问也不是完全互斥的。
-
-一个解决方案是在app中使用一个互斥锁来控制写者们对这个shared resource的访问而对读者们不施加额外的约束。如下：
-
+可以使用一个互斥锁来实现写者和写者之间对这个shared resource的互斥访问，而对于读者read出来的shared resource可能不完整的问题，可以通过在应用程序中进行逻辑判断并重试等机制进行解决。代码示例：
 ```c
 sem_t foobarlock;
 
 void reader(void)
 {
   while (1) {
-    /* read the records */
+    /* read the records of the shared resource, may need to sovle incompletion problems */
   }
 }
 
@@ -23,15 +24,16 @@ void writer(void)
 {
   while (1) {
     P(&foobarlock);
-    /* create/read/update/delete the records */
+    /* create/read/update/delete the records of the shared resource */
     V(&foobarlock);
   }
 }
 ```
 
-Foobar是一种惯用语，在此处指代一组相关的record。Foobarlock代表多个隐含的record-level lock和一个显式的shared-resource-level lock，分别施加在每个record上以及这个shared resource上，foobarlock由此得名。
-
-由于允许读者读写者正在写的shared resource，虽然每个record都有Readers-Writer Lock的保护，但是有时候读者读出来的shared resource从整体上来看可能会存在逻辑上的歧义，可以通过逻辑检查和重试等机制进行消除。
+对foobarlock解决方案的一些评价：
+- 经典的Readers-Writer Lock需要使用一个readcnt计数器和一个保护readcnt计数器的互斥锁来实现读者和写者之间的互斥，在这里都不需要了，foobarlock只使用一个互斥锁，实现起来简单很多，但是作为代价，应用程序需要自己解决读者read出来的shared resource可能不完整的问题。
+- Foobarlock的设计思想是读者不需要操作锁，只有写者才需要操作锁。
+- Foobarlock依赖于database提供的隐式的或显式的record-level lock。
 
 ### Credits
 - Computer Systems: A Programmer's Perspective, Third Edition
