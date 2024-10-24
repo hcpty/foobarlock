@@ -30,7 +30,7 @@ void writer(void)
 }
 ```
 
-对foobarlock解决方案的一些评价：
+对于foobarlock解决方案的一些评价：
 - Foobarlock只使用一个互斥锁，实现非常简单，但是作为代价，应用程序需要自行解决读者read出来的shared resource可能不完整的问题。
 - Foobarlock的设计思想是读者不需要操作锁，只有写者才需要操作锁。
 - Foobarlock依赖于database提供的隐式的或显式的record-level lock。
