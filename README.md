@@ -34,5 +34,6 @@ Foobar是一种惯用语，在此处指代一组相关的record。Foobarlock代�
 由于允许读者读写者正在写的shared resource，虽然每个record都有Readers-Writer Lock的保护，但是有时候读者读出来的shared resource从整体上来看可能会存在逻辑上的歧义，可以通过逻辑检查和重试等机制进行消除。
 
 ### Credits
+- Computer Systems: A Programmer's Perspective, Third Edition
 - [Readers–writers problem - Wikipedia](https://en.wikipedia.org/wiki/Readers-writers_problem)
 - [Readers–writer lock - Wikipedia](https://en.wikipedia.org/wiki/Readers–writer_lock)
