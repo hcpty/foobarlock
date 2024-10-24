@@ -31,7 +31,7 @@ void writer(void)
 ```
 
 对foobarlock解决方案的一些评价：
-- 经典的Readers-Writer Lock需要使用一个readcnt计数器和一个保护readcnt计数器的互斥锁来实现读者和写者之间的互斥，在这里都不需要了，foobarlock只使用一个互斥锁，实现起来简单很多，但是作为代价，应用程序需要自己解决读者read出来的shared resource可能不完整的问题。
+- Foobarlock只使用一个互斥锁，实现非常简单，但是作为代价，应用程序需要自己解决读者read出来的shared resource可能不完整的问题。
 - Foobarlock的设计思想是读者不需要操作锁，只有写者才需要操作锁。
 - Foobarlock依赖于database提供的隐式的或显式的record-level lock。
 
